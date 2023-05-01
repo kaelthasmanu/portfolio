@@ -1,0 +1,78 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section class="box skills">
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Full Stack</h2>
+		<p>I am learning full stack programming.I am learning to work with different 
+			programming languages and frameworks to improve my development skills both in 
+			the front-end and in the back-end. I am passionate about technology and I am 
+			willing to take on new challenges to improve my skills</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>SysAdmin</h2>
+		<p>I currently work as a Network Administrator at the University of Matanzas.As a network 
+			administrator , my job is to ensure the operation and 
+			security of the institution's network infrastructure. This involves the design, 
+			configuration, maintenance, and monitoring of network devices such as routers, switches, 
+			firewalls, and DNS servers. In addition, I am in charge of implementing security policies, 
+			such as access control and intrusion detection, as well as solving technical problems 
+			related to network connectivity. I also work closely with other information technology 
+			teams to ensure that the university's connectivity needs are met efficiently and 
+			effectively.</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Teamwork</h2>
+		<p>I believe in the importance of open and effective communication, cooperation and mutual 
+			respect to achieve our goals effectively. I am always willing to listen to the 
+			ideas and perspectives of others and collaborate in solving problems. I am proactive in 
+			identifying team tasks and needs, and I strive to do my part to support my peers. I am 
+			committed to contributing to the positive and productive environment in which we work 
+			together and I am open to learning from my mistakes in order to improve in the future.</p>
+	</div>
+</section>
+
+<style>
+	.box {
+		border: 1px solid var(--gray-800);
+		border-radius: 0.75rem;
+		padding: 1.5rem;
+		background-color: var(--gray-999_40);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.skills {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	.skills h2 {
+		font-size: var(--text-lg);
+	}
+
+	.skills p {
+		color: var(--gray-400);
+	}
+
+	@media (min-width: 50em) {
+		.box {
+			border-radius: 1.5rem;
+			padding: 2.5rem;
+		}
+
+		.skills {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 5rem;
+		}
+
+		.skills h2 {
+			font-size: var(--text-2xl);
+		}
+	}
+</style>
