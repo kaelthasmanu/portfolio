@@ -13,17 +13,30 @@ const { href } = Astro.props;
 		position: relative;
 		display: flex;
 		place-content: center;
+		align-items: center;
 		text-align: center;
-		padding: 0.56em 2em;
+		padding: 0.75em 2em;
 		gap: 0.8em;
 		color: var(--accent-text-over);
 		text-decoration: none;
 		line-height: 1.1;
-		border-radius: 999rem;
+		border-radius: var(--radius-full);
 		overflow: hidden;
 		background: var(--gradient-accent-orange);
 		box-shadow: var(--shadow-md);
 		white-space: nowrap;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+		transition: all var(--hover-transition);
+	}
+
+	a:hover {
+		box-shadow: var(--shadow-lg), var(--shadow-glow);
+		transform: translateY(-2px);
+	}
+
+	a:active {
+		transform: translateY(0);
 	}
 
 	@media (min-width: 20em) {

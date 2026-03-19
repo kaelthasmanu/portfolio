@@ -19,21 +19,40 @@ import Icon from './Icon.astro';
 
 <style>
 	aside {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 3rem;
-		border-top: 1px solid var(--gray-800);
-		border-bottom: 1px solid var(--gray-800);
-		padding: 5rem 1.5rem;
-		background-color: var(--gray-999_40);
+		gap: 2.5rem;
+		padding: 4rem 1.5rem;
+		background: var(--glass-bg);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		border-top: 1px solid var(--glass-border);
+		border-bottom: 1px solid var(--glass-border);
 		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+	}
+
+	aside::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--gradient-accent);
 	}
 
 	h2 {
 		font-size: var(--text-xl);
 		text-align: center;
-		max-width: 15ch;
+		max-width: 20ch;
+		background: var(--gradient-hero);
+		background-size: 200% auto;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.cta-container {
@@ -45,7 +64,7 @@ import Icon from './Icon.astro';
 
 	@media (min-width: 50em) {
 		aside {
-			padding: 7.5rem;
+			padding: 5rem 4rem;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: space-between;
@@ -54,6 +73,10 @@ import Icon from './Icon.astro';
 		h2 {
 			font-size: var(--text-3xl);
 			text-align: left;
+		}
+
+		.cta-container {
+			flex-direction: row;
 		}
 	}
 </style>
