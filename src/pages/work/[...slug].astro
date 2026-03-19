@@ -59,7 +59,7 @@ const { Content } = await entry.render();
 <style>
 	header {
 		padding-bottom: 2.5rem;
-		border-bottom: 1px solid var(--gray-800);
+		border-bottom: 1px solid var(--glass-border);
 	}
 
 	.back-link {
@@ -78,11 +78,14 @@ const { Content } = await entry.render();
 	.tags {
 		display: flex;
 		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 
 	.description {
 		font-size: var(--text-lg);
 		max-width: 54ch;
+		color: var(--gray-300);
+		line-height: 1.7;
 	}
 
 	.content {
@@ -103,10 +106,15 @@ const { Content } = await entry.render();
 	}
 
 	.content :global(img) {
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-sm);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-md);
 		background: var(--gradient-subtle);
-		border: 1px solid var(--gray-800);
+		border: 1px solid var(--glass-border);
+		transition: box-shadow var(--hover-transition);
+	}
+
+	.content :global(img:hover) {
+		box-shadow: var(--shadow-lg), var(--shadow-glow);
 	}
 
 	.content :global(blockquote) {
@@ -115,7 +123,8 @@ const { Content } = await entry.render();
 		font-weight: 600;
 		line-height: 1.1;
 		padding-inline-start: 1.5rem;
-		border-inline-start: 0.25rem solid var(--accent-dark);
+		border-inline-start: 3px solid;
+		border-image: var(--gradient-accent) 1;
 		color: var(--gray-0);
 	}
 
@@ -123,7 +132,7 @@ const { Content } = await entry.render();
 	.content :global(a) {
 		text-decoration: 1px solid underline transparent;
 		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+		transition: all var(--hover-transition);
 	}
 
 	.back-link:hover,
