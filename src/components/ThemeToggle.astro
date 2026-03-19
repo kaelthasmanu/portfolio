@@ -14,11 +14,18 @@ import Icon from './Icon.astro';
 	button {
 		display: flex;
 		border: 0;
-		border-radius: 999rem;
+		border-radius: var(--radius-full);
 		padding: 0;
-		background-color: var(--gray-999);
-		box-shadow: inset 0 0 0 1px var(--accent-overlay);
+		background: var(--glass-bg);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		box-shadow: inset 0 0 0 1px var(--glass-border);
 		cursor: pointer;
+		transition: box-shadow var(--hover-transition);
+	}
+
+	button:hover {
+		box-shadow: inset 0 0 0 1px var(--accent-regular), var(--shadow-glow);
 	}
 
 	.icon {
@@ -29,7 +36,8 @@ import Icon from './Icon.astro';
 		width: 2rem;
 		height: 2rem;
 		font-size: 1rem;
-		color: var(--accent-overlay);
+		color: var(--gray-400);
+		transition: color var(--hover-transition);
 	}
 
 	.icon.light::before {
@@ -37,8 +45,8 @@ import Icon from './Icon.astro';
 		z-index: -1;
 		position: absolute;
 		inset: 0;
-		background-color: var(--accent-regular);
-		border-radius: 999rem;
+		background: var(--gradient-accent-orange);
+		border-radius: var(--radius-full);
 	}
 
 	:global(.theme-dark) .icon.light::before {
