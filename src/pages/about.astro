@@ -34,19 +34,77 @@ import Hero from '../components/Hero.astro';
 			<section>
 				<h2 class="section-title">Skills</h2>
 				<div class="content">
-					<p><strong>Programming languages:</strong> Bash ,Python, C#, PHP and Javascript.</p>
-					<p><strong>Frameworks CSS:</strong> Bootstrap and TailwindCSS.</p>
-					<p><strong>Frameworks:</strong> ReactJS ,ASP.Net, ExpressJS, Flask and FastAPI.</p>
-					<p><strong>ORMs:</strong> EntityFramework, Prisma, SQLAlchemy.</p>
-					<p><strong>Database Manager:</strong> MySQL ,Redis, InfluxDB, MariaDB and PostgreSQL.</p>
-					<p><strong>Version Control:</strong> Git and Github.</p>
-					<p><strong>Operating system:</strong> Linux , FreeBSD ,Alpine, Windows and MacOS.</p>
-					<p><strong>Web Server:</strong> Apache2, Nginx and Traefik.</p>
-					<p><strong>Virtualization Cloud Computing:</strong> Proxmox, Docker and Kubernetes.</p>
-					<p><strong>Monitoring Tools:</strong> Zabbix,Telegraf,InfluxDB,Grafana.</p>
-					<p><strong>Firewalls:</strong> pfSense and OPNsense.</p>
-					<p><strong>CI/CD tools:</strong> Ansible, Terraform, Jenkins, Github Actions.</p>
-					<p><strong>Security Tools:</strong> Metasploit, Nmap, Wireshark, WPscan, Bettercap, Beef, Settoolkit, BurpSuite.</p>					
+					<div class="skills-grid">
+						<div class="skill-category">
+							<span class="category-label">Languages</span>
+							<div class="tech-pills">
+								<span class="tech-pill">Python</span>
+								<span class="tech-pill">JavaScript</span>
+								<span class="tech-pill">C#</span>
+								<span class="tech-pill">PHP</span>
+								<span class="tech-pill">Bash</span>
+							</div>
+						</div>
+						<div class="skill-category">
+							<span class="category-label">Frontend</span>
+							<div class="tech-pills">
+								<span class="tech-pill">React</span>
+								<span class="tech-pill">Next.js</span>
+								<span class="tech-pill">TailwindCSS</span>
+								<span class="tech-pill">HTML5</span>
+								<span class="tech-pill">CSS3</span>
+							</div>
+						</div>
+						<div class="skill-category">
+							<span class="category-label">Backend</span>
+							<div class="tech-pills">
+								<span class="tech-pill">Node.js</span>
+								<span class="tech-pill">Express.js</span>
+								<span class="tech-pill">NestJS</span>
+								<span class="tech-pill">ASP.NET</span>
+								<span class="tech-pill">Flask</span>
+								<span class="tech-pill">FastAPI</span>
+							</div>
+						</div>
+						<div class="skill-category">
+							<span class="category-label">Databases</span>
+							<div class="tech-pills">
+								<span class="tech-pill">PostgreSQL</span>
+								<span class="tech-pill">MySQL</span>
+								<span class="tech-pill">MariaDB</span>
+								<span class="tech-pill">MongoDB</span>
+								<span class="tech-pill">SQLite</span>
+								<span class="tech-pill">Redis</span>
+								<span class="tech-pill">InfluxDB</span>
+							</div>
+						</div>
+						<div class="skill-category">
+							<span class="category-label">DevOps &amp; Cloud</span>
+							<div class="tech-pills">
+								<span class="tech-pill">Docker</span>
+								<span class="tech-pill">Kubernetes</span>
+								<span class="tech-pill">AWS</span>
+								<span class="tech-pill">Terraform</span>
+								<span class="tech-pill">Ansible</span>
+								<span class="tech-pill">GitHub Actions</span>
+								<span class="tech-pill">Jenkins</span>
+								<span class="tech-pill">DigitalOcean</span>
+							</div>
+						</div>
+						<div class="skill-category">
+							<span class="category-label">APIs &amp; Tools</span>
+							<div class="tech-pills">
+								<span class="tech-pill">GraphQL</span>
+								<span class="tech-pill">Kafka</span>
+								<span class="tech-pill">JWT</span>
+								<span class="tech-pill">MinIO</span>
+								<span class="tech-pill">Prisma</span>
+								<span class="tech-pill">Git</span>
+								<span class="tech-pill">Nginx</span>
+								<span class="tech-pill">Apache</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 			<section>
@@ -115,6 +173,66 @@ import Hero from '../components/Hero.astro';
 	.content :global(a:hover),
 	.content :global(a:focus) {
 		text-decoration-color: currentColor;
+	}
+
+	/* ── Skills grid ── */
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 1rem;
+		margin-top: 0.25rem;
+	}
+
+	.skill-category {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		padding: 1rem 1.125rem;
+		border-radius: var(--radius-lg);
+		background: var(--glass-bg);
+		border: 1px solid var(--glass-border);
+		backdrop-filter: blur(var(--glass-blur));
+		transition: all var(--hover-transition);
+	}
+
+	.skill-category:hover {
+		border-color: var(--accent-regular);
+		box-shadow: var(--shadow-glow);
+		transform: translateY(-2px);
+	}
+
+	.category-label {
+		font-size: 0.65rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		background: var(--gradient-accent-orange);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.tech-pills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+	}
+
+	.tech-pill {
+		font-size: 0.72rem;
+		padding: 0.2rem 0.6rem;
+		border-radius: 999px;
+		background: var(--accent-subtle-overlay);
+		border: 1px solid var(--glass-border);
+		color: var(--gray-200);
+		transition: all var(--hover-transition);
+		white-space: nowrap;
+	}
+
+	.tech-pill:hover {
+		background: var(--accent-overlay);
+		border-color: var(--accent-regular);
+		color: var(--gray-0);
 	}
 
 	@media (min-width: 50em) {
