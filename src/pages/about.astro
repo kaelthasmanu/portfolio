@@ -8,7 +8,11 @@ import Hero from '../components/Hero.astro';
 <BaseLayout title="About | Manuel Gorrin" description="About Manuel Gorrin">
 	<div class="stack gap-20">
 		<main class="wrapper about">
-			<h2 style="text-align: center;">About me !!</h2>
+			<Hero
+				title="About Me"
+				tagline="Learn more about my background, skills, and what drives me as a developer."
+				align="center"
+			/>
 			
 			<section>
 				<h2 class="section-title">Background</h2>
@@ -24,7 +28,7 @@ import Hero from '../components/Hero.astro';
 			<section>
 				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<p>Computer Engineering at the University of Matanzas. Cuba</p>
+					<p>Computer Engineering at the University of Matanzas, Cuba.</p>
 				</div>
 			</section>
 			<section>
@@ -46,7 +50,7 @@ import Hero from '../components/Hero.astro';
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Enfoque</h2>
+				<h2 class="section-title">Focus</h2>
 				<div class="content">
 					<p>I care deeply about software optimization, security, best practices, and code quality. I believe in writing efficient, secure, and maintainable code that follows industry standards.</p>
 				</div>
@@ -66,25 +70,40 @@ import Hero from '../components/Hero.astro';
 
 	img {
 		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-lg);
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.75rem;
 		color: var(--gray-200);
+		padding: 1.5rem;
+		border-radius: var(--radius-lg);
+		border: 1px solid transparent;
+		transition: all var(--hover-transition);
+	}
+
+	section:hover {
+		border-color: var(--glass-border);
+		background: var(--accent-subtle-overlay);
 	}
 
 	.section-title {
 		grid-column-start: 1;
 		font-size: var(--text-xl);
 		color: var(--gray-0);
+		background: var(--gradient-hero);
+		background-size: 200% auto;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.content {
 		grid-column: 2 / 4;
+		line-height: 1.7;
 	}
 
 	.content :global(a) {
@@ -111,6 +130,11 @@ import Hero from '../components/Hero.astro';
 		section {
 			display: contents;
 			font-size: var(--text-lg);
+		}
+
+		section:hover {
+			border-color: transparent;
+			background: transparent;
 		}
 	}
 </style>
