@@ -14,7 +14,7 @@ const { variant } = Astro.props;
 	.grid {
 		display: grid;
 		grid-auto-rows: 1fr;
-		gap: 1rem;
+		gap: 1.5rem;
 		list-style: none;
 		padding: 0;
 	}
@@ -32,11 +32,11 @@ const { variant } = Astro.props;
 	@media (min-width: 50em) {
 		.grid {
 			grid-template-columns: 1fr 1fr;
-			gap: 4rem;
+			gap: 2.5rem;
 		}
 
 		.grid.offset {
-			--row-offset: 7.5rem;
+			--row-offset: 5rem;
 			padding-bottom: var(--row-offset);
 		}
 
