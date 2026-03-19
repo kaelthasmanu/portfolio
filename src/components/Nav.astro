@@ -115,17 +115,24 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 <style>
 	nav {
 		z-index: 9999;
-		position: relative;
+		position: sticky;
+		top: 0;
 		font-family: var(--font-brand);
 		font-weight: 500;
-		margin-bottom: 3.5rem;
+		margin-bottom: 2rem;
+		padding: 1rem 1.5rem;
+		background: var(--glass-bg);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		border-bottom: 1px solid var(--glass-border);
+		transition: background var(--theme-transition), border-color var(--theme-transition);
 	}
 
 	.menu-header {
 		display: flex;
 		justify-content: space-between;
 		gap: 0.5rem;
-		padding: 1.5rem;
+		padding: 0;
 	}
 
 	.site-title {
@@ -135,66 +142,87 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 		line-height: 1.1;
 		color: var(--gray-0);
 		text-decoration: none;
+		font-weight: 700;
+		font-size: var(--text-md);
+		letter-spacing: -0.02em;
+		transition: color var(--hover-transition);
+	}
+
+	.site-title:hover {
+		color: var(--accent-regular);
 	}
 
 	.menu-button {
 		position: relative;
 		display: flex;
 		border: 0;
-		border-radius: 999rem;
+		border-radius: var(--radius-full);
 		padding: 0.5rem;
 		font-size: 1.5rem;
 		color: var(--gray-300);
-		background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
-		box-shadow: var(--shadow-md);
+		background: var(--glass-bg);
+		border: 1px solid var(--glass-border);
+		box-shadow: var(--shadow-sm);
+		cursor: pointer;
+		transition: all var(--hover-transition);
+	}
+
+	.menu-button:hover {
+		border-color: var(--accent-regular);
+		color: var(--accent-regular);
 	}
 
 	.menu-button[aria-expanded='true'] {
 		color: var(--gray-0);
-		background: linear-gradient(180deg, var(--gray-600), transparent),
-			radial-gradient(var(--gray-900), var(--gray-800) 150%);
+		background: var(--accent-overlay);
+		border-color: var(--accent-regular);
 	}
 
 	.menu-button[hidden] {
 		display: none;
 	}
 
-	.menu-button::before {
-		position: absolute;
-		inset: -1px;
-		content: '';
-		background: var(--gradient-stroke);
-		border-radius: 999rem;
-		z-index: -1;
-	}
-
 	#menu-content {
 		position: absolute;
 		left: 0;
 		right: 0;
+		top: 100%;
 	}
 
 	.nav-items {
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.25rem;
 		font-size: var(--text-md);
 		line-height: 1.2;
 		list-style: none;
-		padding: 2rem;
-		background-color: var(--gray-999);
-		border-bottom: 1px solid var(--gray-800);
+		padding: 1rem;
+		background: var(--glass-bg);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		border-bottom: 1px solid var(--glass-border);
 	}
 
 	.link {
 		display: inline-block;
 		color: var(--gray-300);
 		text-decoration: none;
+		padding: 0.625rem 1rem;
+		border-radius: var(--radius-md);
+		transition: all var(--hover-transition);
+	}
+
+	.link:hover,
+	.link:focus {
+		color: var(--gray-100);
+		background-color: var(--accent-subtle-overlay);
 	}
 
 	.link.active {
-		color: var(--gray-0);
+		color: var(--accent-text-over);
+		background: var(--gradient-accent-orange);
+		box-shadow: var(--shadow-glow);
 	}
 
 	.menu-footer {
@@ -204,16 +232,19 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 		display: flex;
 		justify-content: space-between;
 		gap: 0.75rem;
-		padding: 1.5rem 2rem 1.5rem 1.5rem;
-		background-color: var(--gray-999);
-		border-radius: 0 0 0.75rem 0.75rem;
-		box-shadow: var(--shadow-lg);
+		padding: 1rem;
+		background: var(--glass-bg);
+		backdrop-filter: var(--glass-blur);
+		-webkit-backdrop-filter: var(--glass-blur);
+		border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+		border: 1px solid var(--glass-border);
+		border-top: 0;
 	}
 
 	.socials {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.625rem;
+		gap: 0.25rem;
 		font-size: var(--icon-size);
 	}
 
@@ -222,12 +253,14 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 		padding: var(--icon-padding);
 		text-decoration: none;
 		color: var(--accent-dark);
-		transition: color var(--theme-transition);
+		border-radius: var(--radius-md);
+		transition: all var(--hover-transition);
 	}
 
 	.social:hover,
 	.social:focus {
 		color: var(--accent-text-over);
+		background: var(--accent-overlay);
 	}
 
 	.theme-toggle {
@@ -241,12 +274,8 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 			display: grid;
 			grid-template-columns: 1fr auto 1fr;
 			align-items: center;
-			padding: 2.5rem 5rem;
-			gap: 1rem;
-		}
-
-		.menu-header {
-			padding: 0;
+			padding: 1rem 3rem;
+			margin-bottom: 0;
 		}
 
 		.site-title {
@@ -261,26 +290,21 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 			position: relative;
 			flex-direction: row;
 			font-size: var(--text-sm);
-			border-radius: 999rem;
-			border: 0;
-			padding: 0.5rem 0.5625rem;
-			background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
-			box-shadow: var(--shadow-md);
-		}
-
-		.nav-items::before {
-			position: absolute;
-			inset: -1px;
-			content: '';
-			background: var(--gradient-stroke);
-			border-radius: 999rem;
-			z-index: -1;
+			border-radius: var(--radius-full);
+			border: 1px solid var(--glass-border);
+			padding: 0.375rem;
+			background: var(--glass-bg);
+			backdrop-filter: var(--glass-blur);
+			-webkit-backdrop-filter: var(--glass-blur);
+			box-shadow: var(--shadow-sm);
+			gap: 0.125rem;
 		}
 
 		.link {
-			padding: 0.5rem 1rem;
-			border-radius: 999rem;
-			transition: color var(--theme-transition), background-color var(--theme-transition);
+			padding: 0.5rem 1.25rem;
+			border-radius: var(--radius-full);
+			font-weight: 500;
+			transition: all var(--hover-transition);
 		}
 
 		.link:hover,
@@ -291,7 +315,8 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 
 		.link.active {
 			color: var(--accent-text-over);
-			background-color: var(--accent-regular);
+			background: var(--gradient-accent-orange);
+			box-shadow: var(--shadow-glow);
 		}
 
 		.menu-footer {
@@ -301,7 +326,9 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 			align-items: center;
 			padding: 0;
 			background-color: transparent;
+			backdrop-filter: none;
 			box-shadow: none;
+			border: 0;
 		}
 
 		.socials {
