@@ -11,4 +11,5 @@ description: |
     SquidStats A modern tool for parsing and analyzing Squid logs, providing a sleek and user-friendly dashboard to visualize real-time connection data. This project helps network administrators monitor and manage Squid proxy connections effectively, including quota management and usage control.
 ---
 
-SquidStats A modern tool for parsing and analyzing Squid logs
+SquidStats A modern tool for parsing and analyzing Squid logs: 
+https://github.com/kaelthasmanu/SquidStats
