@@ -15,7 +15,7 @@ const { align = 'center', tagline, title, typewriterText } = Astro.props;
 			{title}
 			{typewriterText ? (
 				<>
-					<span class="gradient-text" id="hero-typewriter" data-text={typewriterText}></span>
+					<span class="gradient-text" id="hero-typewriter" data-text={typewriterText}>{typewriterText}</span>
 					<span class="cursor">|</span>
 				</>
 			) : null}
@@ -101,20 +101,29 @@ const { align = 'center', tagline, title, typewriterText } = Astro.props;
 </style>
 
 <script is:inline>
-	const el = document.getElementById('hero-typewriter');
-	const text = el?.dataset?.text;
-	if (!el || !text) {
-		return;
-	}
-
-	const chars = text.split('');
-
-	const animate = () => {
-		if (chars.length > 0) {
-			el.textContent += chars.shift();
-			setTimeout(animate, 70);
+	const runTypewriter = () => {
+		const el = document.getElementById('hero-typewriter');
+		const text = el?.dataset?.text;
+		if (!el || !text) {
+			return;
 		}
+
+		el.textContent = '';
+		const chars = text.split('');
+
+		const animate = () => {
+			if (chars.length > 0) {
+				el.textContent += chars.shift();
+				setTimeout(animate, 70);
+			}
+		};
+
+		animate();
 	};
 
-	animate();
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', runTypewriter);
+	} else {
+		runTypewriter();
+	}
 </script>
